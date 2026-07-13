@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-en="music | ege algel personal website" data-tr="müzik | ege algel kişisel site">music | ege algel personal website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://open.spotify.com" />
+  <link rel="preconnect" href="https://i.scdn.co" crossorigin />
+  <link rel="dns-prefetch" href="https://mosaic.scdn.co" />
+  <link rel="dns-prefetch" href="https://image-cdn-fa.spotifycdn.com" />
+  <link rel="dns-prefetch" href="https://pickasso.spotifycdn.com" />
+</head>
+<body>
+  <div class="langbar">
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">
+      <span data-lang="en">en</span><span class="sep">/</span><span data-lang="tr">tr</span>
+    </button>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="site-name"><a href="index.html">Ege Algel</a></div>
+      <p class="tagline"
+         data-en="artificial intelligence · mobile app development · music"
+         data-tr="yapay zeka · mobil uygulama geliştirme · müzik">artificial intelligence · mobile app development · music</p>
+
+      <nav class="menu">
+        <a href="index.html" data-en="Home" data-tr="Ana Sayfa">Home</a>
+        <a href="about.html" data-en="About" data-tr="Hakkımda">About</a>
+        <a href="projects.html" data-en="Projects" data-tr="Projeler">Projects</a>
+        <a href="music.html" class="active" data-en="Music" data-tr="Müzik">Music</a>
+        <a href="travel.html" data-en="Travel" data-tr="Seyahat">Travel</a>
+        <a href="contact.html" data-en="Contact" data-tr="İletişim">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="page-title" data-en="Music" data-tr="Müzik">Music</h1>
+
+      <div class="spotify-profile">
+        <img class="sp-photo" src="https://i.scdn.co/image/ab6775700000ee850f0f2c0a62edb8a28f28ebda" alt="egealgel on Spotify" />
+        <div>
+          <div class="sp-name">egealgel</div>
+          <div class="sp-meta" data-en="Spotify profile" data-tr="Spotify profili">Spotify profile</div>
+          <a href="https://open.spotify.com/user/4mo367u14ps1faihb9cn0rb5v" target="_blank" rel="noopener"
+             data-en="open full profile on spotify →" data-tr="spotify'da profili aç →">open full profile on spotify →</a>
+        </div>
+      </div>
+
+      <div class="sub-title" data-en="Public playlists" data-tr="Herkese açık çalma listeleri">Public playlists</div>
+      <div class="playlist-grid" id="playlistGrid"></div>
+    </main>
+
+    <script>
+      (function () {
+        var PLAYLISTS = [
+          { id: "37i9dQZF1CKMFBxUbxRIAg", title: "Your All-Time Top Songs", cover: "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/atts/atts/default/en" },
+          { id: "2kh0v8DlQJEMONhFvcFUel", title: "GOD LEVEL", cover: "https://mosaic.scdn.co/300/ab67616d00001e0250ff076934366091764d1a09ab67616d00001e0295184f6a953569b683ca9a0dab67616d00001e02c5663e50de353981ed2b1a37ab67616d00001e02cad190f1a73c024e5a40dddd" },
+          { id: "2ILqPFvFXfsIrDkUOlLchL", title: "Look!", cover: "https://mosaic.scdn.co/300/ab67616d00001e02785fba54c4beb88f53089a8aab67616d00001e02991ad3b95bf58bf3f0a2d3b8ab67616d00001e029a01b91bc969044dc2008477ab67616d00001e02bbfe0e669dbb2cca0f8daec3" },
+          { id: "0MsUgQOKo2niCJ7Z4FURzk", title: "Lisboa", cover: "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da8443f59759339f86699e6a6d31" },
+          { id: "3NK8R7D98ZxQXXyX6xs8hu", title: "Stockholm", cover: "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da8457462ff666ce1c9a55464226" },
+          { id: "1tjuzbNGNY28jrTxHUCapw", title: "Radiohead", cover: "https://mosaic.scdn.co/300/ab67616d00001e026c7112082b63beefffe40151ab67616d00001e02863e0e305637100311c91aa7ab67616d00001e02bbaaa8bf9aedb07135d2c6d3ab67616d00001e02c8b444df094279e70d0ed856" },
+          { id: "4G7Kbuij60692k4GuO0ulV", title: "Massive Attack", cover: "https://mosaic.scdn.co/300/ab67616d00001e02852aaa233e122f1dbfefcf00ab67616d00001e02a6ca9857d2c0368e756e833fab67616d00001e02af5beb00d940f5ede452d6b5ab67616d00001e02ee2e7a13c1badeb11be5e8b3" },
+          { id: "6UvlGUiP5BEpJOOY9PB534", title: "Muse", cover: "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da840a9c9d79454d8162ccdf788e" },
+          { id: "0PRZ8LVqdrH2TWa2NRVTPA", title: "Air & Zero 7", cover: "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da843cbac154ea68bf6de354208b" },
+          { id: "7GKj1nS3fukJ5th4OjPfXT", title: "Brit", cover: "https://mosaic.scdn.co/300/ab67616d00001e025c744e5b04bf0d1ebf42a815ab67616d00001e02a0430b2bfc00d662b83ec095ab67616d00001e02b23737878e75582c2e255029ab67616d00001e02f69e28716be1331924f25f2e" }
+        ];
+
+        var grid = document.getElementById("playlistGrid");
+
+        PLAYLISTS.forEach(function (p) {
+          var b = document.createElement("button");
+          b.className = "pl";
+          b.type = "button";
+          b.setAttribute("aria-label", "play " + p.title);
+
+          var img = document.createElement("img");
+          img.className = "pl-cover";
+          img.loading = "lazy";
+          img.alt = "";
+          img.src = p.cover;
+
+          var title = document.createElement("span");
+          title.className = "pl-title";
+          title.lang = "en";
+          title.textContent = p.title;
+
+          var play = document.createElement("span");
+          play.className = "pl-play";
+          play.setAttribute("aria-hidden", "true");
+          play.textContent = "▶ play";
+
+          b.appendChild(img);
+          b.appendChild(title);
+          b.appendChild(play);
+
+          b.addEventListener("click", function () {
+            var f = document.createElement("iframe");
+            f.src = "https://open.spotify.com/embed/playlist/" + p.id + "?utm_source=generator&theme=0";
+            f.height = "152";
+            f.loading = "eager";
+            f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+            f.setAttribute("allowfullscreen", "");
+            b.replaceWith(f);
+          });
+
+          grid.appendChild(b);
+        });
+      })();
+    </script>
+
+    <footer>
+      <span data-en="designed by ege" data-tr="designed by ege">designed by ege</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
